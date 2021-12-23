@@ -344,12 +344,12 @@ workflows:
       - test_frontend:
           requires:
             - build_frontend
-      - analyze_backend:
-          requires:
-            - test_backend
-      - analyze_frontend:
-          requires:
-            - test_frontend
+      # - analyze_backend:
+      #     requires:
+      #       - test_backend
+      # - analyze_frontend:
+      #     requires:
+      #       - test_frontend
       - deploy_backend_infrastructure:
           requires:
             - analyze_backend
