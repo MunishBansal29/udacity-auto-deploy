@@ -358,9 +358,9 @@ workflows:
             branches:
               only: [ master ]
       - deploy_frontend_infrastructure:
-          requires:
-            - analyze_backend
-            - analyze_frontend
+          # requires:
+          #   - analyze_backend
+          #   - analyze_frontend
           filters:
             branches:
               only: [ master ]
