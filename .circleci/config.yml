@@ -192,7 +192,7 @@ jobs:
             mkdir -p ~/project/.circleci/ansible/roles/deploy_backend/files/
             mv dist.zip ~/project/.circleci/ansible/roles/deploy_backend/files/
       - add_ssh_keys:
-          fingerprints: [ "c8:74:5e:9c:5f:b0:d6:68:27:22:d5:1f:39:a5:a6:a5" ]
+          fingerprints: [ "83:be:24:e6:86:5d:9b:07:73:fb:62:f4:e9:f5:1b:8a" ]
       - run:
           name: Setup EC2 instance & copy compiled backend to the EC2 instance
           command: |
