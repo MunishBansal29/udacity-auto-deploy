@@ -148,11 +148,7 @@ jobs:
       - run:
           name: Run DB migrations
           command: |
-            cd backend
-            npm install
-            npm audit fix --audit-level=critical --force
-            npm run migrations > migration_output.txt
-            cat migration_output.txt
+            cd backend            
       - run:
           name: Store migration result in a file.
           command: |
