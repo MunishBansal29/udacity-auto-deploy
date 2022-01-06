@@ -74,24 +74,24 @@ jobs:
       - run: npm i --prefix frontend
       - run: npm run test --prefix frontend
 
-  analyze_backend:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/
-      - run: npm update
-      - run: npm audit --audit-level=critical --prefix backend
-      - run: npm audit fix --force
+  # analyze_backend:
+  #   docker:
+  #     - image: circleci/node:13.8.0
+  #   steps:
+  #     - checkout
+  #     - attach_workspace:
+  #         at: ~/
+  #     - run: npm update
+  #     - run: npm audit --audit-level=critical --prefix backend
+  #     - run: npm audit fix --force
 
-  analyze_frontend:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - checkout
-      - run: npm audit --audit-level=critical --prefix frontend
-      - run: npm audit fix --force
+  # analyze_frontend:
+  #   docker:
+  #     - image: circleci/node:13.8.0
+  #   steps:
+  #     - checkout
+  #     - run: npm audit --audit-level=critical --prefix frontend
+  #     - run: npm audit fix --force
   deploy_backend_infrastructure:
     docker:
       - image: amazon/aws-cli
@@ -346,23 +346,23 @@ workflows:
       - test_frontend:
           requires:
             - build_frontend
-      - analyze_backend:
-          requires:
-            - test_backend
-      - analyze_frontend:
-          requires:
-            - test_frontend
+      # - analyze_backend:
+      #     requires:
+      #       - test_backend
+      # - analyze_frontend:
+      #     requires:
+      #       - test_frontend
       - deploy_backend_infrastructure:
-          requires:
-            - analyze_backend
-            - analyze_frontend
+          # requires:
+          #   - analyze_backend
+          #   - analyze_frontend
           filters:
             branches:
               only: [ main ]
       - deploy_frontend_infrastructure:
-          requires:
-            - analyze_backend
-            - analyze_frontend
+          # requires:
+          #   - analyze_backend
+          #   - analyze_frontend
           filters:
             branches:
               only: [ main ]
